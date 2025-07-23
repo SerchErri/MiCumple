@@ -1,0 +1,318 @@
+<div class="golden-emblem">
+        <div class="emblem-circle">
+            <div class="emblem-inner">
+                <div class="emblem-number">45</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-controls">
+        <button class="music-toggle" onclick="toggleMusic()">
+            <div class="music-icon" id="musicIcon">🎵</div>
+            <span id="musicText">Música</span>
+        </button>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let isPlaying = false;
+        const music = document.getElementById('backgroundMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicText = document.getElementById('musicText');
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.textContent = '🎵';
+                musicText.textContent = 'Música';
+                isPlaying = false;
+            } else {
+                music.play().catch(e => {
+                    console.log('No se pudo reproducir la música automáticamente');
+                });
+                musicIcon.textContent = '🔊';
+                musicText.textContent = 'Pausar';
+                isPlaying = true;
+            }
+        }
+
+        // Para dispositivos móviles, permitir reproducción después de interacción
+        document.addEventListener('touchstart', function() {
+            if (!isPlaying) {
+                music.load();
+            }
+        }, {once: true});
+    </script><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Cumpleaños Elegante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 40%, #000051 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .bokeh-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(100, 149, 237, 0.8), rgba(135, 206, 250, 0.4), transparent);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bokeh:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 15%; animation-delay: 0s; opacity: 0.6; }
+        .bokeh:nth-child(2) { width: 120px; height: 120px; top: 20%; left: 75%; animation-delay: 1s; opacity: 0.4; }
+        .bokeh:nth-child(3) { width: 60px; height: 60px; top: 35%; left: 25%; animation-delay: 2s; opacity: 0.7; }
+        .bokeh:nth-child(4) { width: 100px; height: 100px; top: 45%; left: 85%; animation-delay: 3s; opacity: 0.5; }
+        .bokeh:nth-child(5) { width: 90px; height: 90px; top: 60%; left: 10%; animation-delay: 4s; opacity: 0.6; }
+        .bokeh:nth-child(6) { width: 70px; height: 70px; top: 75%; left: 70%; animation-delay: 5s; opacity: 0.8; }
+        .bokeh:nth-child(7) { width: 50px; height: 50px; top: 85%; left: 30%; animation-delay: 1.5s; opacity: 0.7; }
+        .bokeh:nth-child(8) { width: 110px; height: 110px; top: 15%; left: 50%; animation-delay: 2.5s; opacity: 0.3; }
+        .bokeh:nth-child(9) { width: 40px; height: 40px; top: 55%; left: 55%; animation-delay: 3.5s; opacity: 0.9; }
+        .bokeh:nth-child(10) { width: 85px; height: 85px; top: 25%; left: 40%; animation-delay: 4.5s; opacity: 0.4; }
+
+        .small-lights {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        .small-lights:nth-child(11) { top: 12%; left: 35%; animation-delay: 0.5s; }
+        .small-lights:nth-child(12) { top: 28%; left: 65%; animation-delay: 1.2s; }
+        .small-lights:nth-child(13) { top: 42%; left: 20%; animation-delay: 1.8s; }
+        .small-lights:nth-child(14) { top: 58%; left: 80%; animation-delay: 2.3s; }
+        .small-lights:nth-child(15) { top: 72%; left: 45%; animation-delay: 2.8s; }
+        .small-lights:nth-child(16) { top: 88%; left: 15%; animation-delay: 3.2s; }
+        .small-lights:nth-child(17) { top: 18%; left: 85%; animation-delay: 0.8s; }
+        .small-lights:nth-child(18) { top: 38%; left: 10%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-20px) scale(1.1); opacity: 0.9; }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+
+
+        .invitation-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 60px;
+        }
+
+        .content-card {
+            max-width: 650px;
+            text-align: center;
+            padding: 50px 40px;
+        }
+
+        .main-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8em;
+            color: #e8eaf6;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+            font-weight: 400;
+        }
+
+        .event-info {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.6em;
+            color: #e8eaf6;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+            font-weight: 400;
+        }
+
+        .rsvp-note {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.2em;
+            color: #e8eaf6;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .final-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.4em;
+            color: #e8eaf6;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+            font-weight: 400;
+        }
+
+        .decorative-line {
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e8eaf6, transparent);
+            margin: 25px auto;
+            opacity: 0.4;
+        }
+
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .music-toggle {
+            background: rgba(232, 234, 246, 0.2);
+            border: 2px solid rgba(232, 234, 246, 0.5);
+            border-radius: 50px;
+            padding: 12px 20px;
+            color: #e8eaf6;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.1em;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-toggle:hover {
+            background: rgba(232, 234, 246, 0.3);
+            transform: scale(1.05);
+        }
+
+        .music-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                min-height: 100vh;
+            }
+            
+            .invitation-content {
+                padding: 30px 20px;
+            }
+            
+            .content-card {
+                padding: 30px 25px;
+            }
+            
+            .main-message {
+                font-size: 1.5em;
+            }
+            
+            .event-info {
+                font-size: 1.3em;
+            }
+            
+            .rsvp-note {
+                font-size: 1.1em;
+            }
+            
+            .final-message {
+                font-size: 1.2em;
+            }
+            
+            .music-controls {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .music-toggle {
+                padding: 10px 16px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bokeh-container">
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="bokeh"></div>
+        <div class="small-lights"></div>
+        <div class="small-lights"></div>
+        <div class="small-lights"></div>
+        <div class="small-lights"></div>
+        <div class="small-lights"></div>
+        <div class="small-lights"></div>
+        <div class="small-lights"></div>
+        <div class="small-lights"></div>
+    </div>
+
+    <div class="golden-emblem">
+        <div class="emblem-circle">
+            <div class="emblem-inner">
+                <div class="emblem-number">45</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="invitation-content">
+        <div class="content-card">
+            <div class="main-message">
+                Cumplir años es abrir las puertas a lo que vendrá, compartir algo rico y brindar con quienes hacen que este viaje valga verdaderamente la pena.
+            </div>
+            
+            <div class="decorative-line"></div>
+            
+            <div class="event-info">
+                Me haría muy feliz que puedas acompañarme el domingo 3 de agosto a las 13 hs en Mercado Central (Microcentro) para celebrar juntos.
+            </div>
+            
+            <div class="decorative-line"></div>
+            
+            <div class="rsvp-note">
+                Por favor, confírmame tu presencia para poder señar la reserva... y pasarte la dirección!
+            </div>
+            
+            <div class="final-message">
+                Te espero con mucho cariño...
+            </div>
+        </div>
+    </div>
+</body>
+</html>
